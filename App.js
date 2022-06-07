@@ -5,7 +5,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Test from "./test/test.js"
 import Meteo from "./Meteo/meteo.js";
-import Inputs from "./login/inputs.js";
  const Tab=  createBottomTabNavigator();
 
 class App extends React.Component {   

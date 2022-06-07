@@ -1,11 +1,16 @@
 import * as React from "react"
 import {View , Text,Button,TextInput,ScrollView} from "react-native"
 import axios from "axios"
+import moment from "moment"
 const State ={
-  pays:'',
+  pays:null,
   donee:null,
-  moi:12.1
+  tmax:null,
+  jour:null,
+  jours:null,
+  tmin:null
 }
+
 function Stt (text){
 State.pays= text
 }
@@ -17,9 +22,13 @@ function met(){
   .then( (response)=>{
     console.log(State.pays)
     State.donee = response.data
-    State.moi=State.donee.list[0].temp.day
-    console.log(typeof(State.donee.list[0].temp.day))
-    console.log(State.moi)
+    State.tmax = State.donee.list[0].temp.day
+    State.tmin = State.donee.list[0].temp.morn
+    State.jour = State.donee.list[0].dt
+    State.jours= moment(State.jour*1000).format('DD/MM')
+    console.log(State.jours)
+    console.log(State.tmax)
+   
   })
   
   
@@ -44,15 +53,9 @@ function Input2({navigation}){
     />
     <Button
     title="Mode d'emploi"
-    onPress={()=> navigation.push("Mode2")}
+    onPress={()=> navigation.push("Mode2",{nom:State.pays,j:State.tmax,n:State.tmin,d:State.jours})}
     />
-    <Text>
-      Voici la météo:
-    </Text>
-    <Text>
-je suis {affiche()}
-     
-    </Text>
+   
   </ScrollView>
    
     

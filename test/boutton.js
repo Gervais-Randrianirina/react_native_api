@@ -1,7 +1,8 @@
 import * as React from "react"
 import {View , Text,Button,TextInput} from "react-native"
 const State ={
-  symbole:''
+  symbole:null,
+  ville:null
 }
 function Stt (text){
 State.symbole= text
@@ -9,9 +10,7 @@ State.symbole= text
 function affiche(){
 alert(State.symbole)
 }
-function envoye(){
-navigation.push('Resultat')
-}
+
 
 function Input({navigation}){ 
   return(

@@ -1,22 +1,21 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import Input from "../login/boutton";
-import Inputs from "../login/inputs";
-import { Button, View , Text} from "react-native";
+import Input from "./boutton";
+import Emp1 from "./emp1";
+import Resulta1 from "./resultat1";
 const Auth = createNativeStackNavigator();
 
 export default class Test extends React.Component {
     render(){
         return(
-<NavigationContainer>
+
     <Auth.Navigator>
-        <Auth.Screen name="numero1" component={Input}/>
-        <Auth.Screen name="numero2" component={Inputs}/>
+        <Auth.Screen name="Ville d'un Etat" component={Input}/>
+        <Auth.Screen name="Mode" component={Emp1}/>
+        <Auth.Screen name="resultat" component={Resulta1}/>
 
     </Auth.Navigator>
-</NavigationContainer>
+
 
         )
     }

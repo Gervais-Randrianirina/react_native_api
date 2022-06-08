@@ -10,9 +10,9 @@ export default class Test extends React.Component {
         return(
 
     <Auth.Navigator>
-        <Auth.Screen name="Ville d'un Etat" component={Input}/>
-        <Auth.Screen name="Mode" component={Emp1}/>
-        <Auth.Screen name="resultat" component={Resulta1}/>
+        <Auth.Screen name="Division d'un pays" component={Input}/>
+        <Auth.Screen name="resultat" component={Emp1}/>
+        <Auth.Screen name="Methode" component={Resulta1}/>
 
     </Auth.Navigator>
 

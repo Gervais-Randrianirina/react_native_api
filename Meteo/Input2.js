@@ -30,6 +30,8 @@ function met(){
     console.log(State.tmax)
    
   })
+  alert('Maintenant appuyer sur le boutton résultat')
+  alert('Vous avez choisi le pays de: '+State.pays)
   
   
 }
@@ -37,26 +39,54 @@ function Input2({navigation}){
   return(
 
 <View>
-  <ScrollView>
-  <Text>
-        Veuillez enter le nom de la ville:
+  
+  <Text
+  style={{
+    textAlign:'center',
+    fontSize:15
+  }}
+  >
+        Veuillez enter le nom d'un pays pour savoir son climat (ex : Madagascar):
     </Text>
 
     <TextInput
-    placeholder="Symbole"
+    style={{
+      padding:10,
+      margin:10,
+      backgroundColor:'white'
+    }}
+    placeholder="nom pays (ex: Madagascar)"
     onChangeText={(text)=>Stt(text)}
     />
+    <View
+    style={{margin:10}}
+    >
     <Button
     title="Valider"
     onPress={met}
   
     />
+    </View>
+    <View
+    style={{margin:10}}
+    >
     <Button
-    title="Mode d'emploi"
-    onPress={()=> navigation.push("Mode2",{nom:State.pays,j:State.tmax,n:State.tmin,d:State.jours})}
+    title="RESULTAT"
+    onPress={()=> navigation.push("resultat",{nom:State.pays,j:State.tmax,n:State.tmin,d:State.jours})}
     />
+    </View>
+   <View
+   style={{margin:10}}
+   >
+   <Button
+    title="Mode d'emploi"
+    onPress={()=>navigation.push('Methode')}
+    
+    />
+   </View>
    
-  </ScrollView>
+   
+  
    
     
 </View>

@@ -1,21 +1,30 @@
 import * as React from "react"
-import {View , Text,Button,TextInput} from "react-native"
+import {View , Text,Button,TextInput,FlatList} from "react-native"
 
-function af(){
-  alert("ca marche")
-}
-function Emp1({navigation}){ 
+
+function Emp1({route}){ 
   return(
 <View>
 
-    <Text>
-       
-        Mode d'emlpoi de la recherche de ville
+    <Text
+      style={{
+        textAlign:'center',
+        fontSize:15
+      }}
+    >
+       Voici la division de cette pays
     </Text>
-    <Button
-    title="affiche"
-    onPress={()=>af()}
-    /> 
+    
+    {<FlatList
+        data={route.params.tab}
+        renderItem={({item}) => <Text 
+        style={{
+          fontSize:16,
+          color:'purple'
+        }}
+        > - {item}</Text>}
+      />
+}
 </View>
           )
     

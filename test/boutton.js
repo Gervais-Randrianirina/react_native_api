@@ -1,36 +1,78 @@
 import * as React from "react"
 import {View , Text,Button,TextInput} from "react-native"
+import axios from "axios"
+
 const State ={
   symbole:null,
-  ville:null
+  ville:null,
+  tab:null
 }
 function Stt (text){
 State.symbole= text
 }
 function affiche(){
-alert(State.symbole)
-}
+  fetch('https://rawcdn.githack.com/kamikazechaser/administrative-divisions-db/master/api/'+State.symbole+'.json')
+  .then((reponse)=>reponse.json()).then((data)=>{
+    State.tab = data
+    console.log(State.tab)
+
+}).catch((err)=>console.log("erreur ao amin'ny :"+err))
+alert('Maintenant appuyer sur le boutton resultat ')
+alert('Vous avez tapez le code pays : '+State.symbole)
+
+  }
+
 
 
 function Input({navigation}){ 
   return(
 <View>
-    <Text>
-        Veuillez enter le symbole:
+    <Text
+      style={{
+        textAlign:'center',
+        fontSize:15
+      }}
+    >
+        Veuillez enter la catégorie code internet du pays (ex : MG pour Madagascar):
     </Text>
     <TextInput
-    placeholder="Symbole"
+    style={{
+      margin:10,
+      padding:10,
+      backgroundColor:'white'
+      
+    }}
+    placeholder="Symbole (ex : MG)"
     onChangeText={(text)=>Stt(text)}
     />
-    <Button
+ <View 
+ style={{margin:10}}
+ >
+ <Button
     title="Valider"
-    onPress={()=>affiche()}
+    onPress={affiche}
   
     />
-    <Button
-    title="Mode d'emploi"
-    onPress={()=> navigation.push('Mode')}
+ </View>
+ <View
+ style={{margin:10}}
+ 
+ >
+ <Button
+    title="Résultat"
+    onPress={()=> navigation.push('resultat',{tab : State.tab})}
     />
+
+   </View>  
+<View
+style={{margin:10}}
+>
+<Button
+    title="MODE D'EMPLOI"
+    onPress={()=>navigation.push('Methode')}
+    />
+</View> 
+
 </View>
           )
     
@@ -38,6 +80,4 @@ function Input({navigation}){
 export default Input
 
     
-
-
 
